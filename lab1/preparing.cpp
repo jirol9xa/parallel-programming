@@ -1,15 +1,14 @@
-#include <mpi.h>
+#include "MPI.h"
 #include <iostream>
 #include <thread>
 #include <utility>
 #include <chrono>
 
 int main(int argc, char *argv[]) {
-    MPI_Init(NULL, NULL);
+    TMPI mpi;
 
     int buff = 0;
-    int rank = 0;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    unsigned rank = mpi.getRank();
     if (rank == 0) {
         auto start = std::chrono::high_resolution_clock::now();
         MPI_Send(&buff, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
@@ -23,6 +22,5 @@ int main(int argc, char *argv[]) {
         MPI_Send(&buff, 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
     }
 
-    MPI_Finalize();
     return 0;
 }
