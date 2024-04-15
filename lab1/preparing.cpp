@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     TMPI mpi;
 
     int buff = 0;
-    unsigned rank = mpi.getRank();
+    int rank = mpi.getRank();
     if (rank == 0) {
         auto start = std::chrono::high_resolution_clock::now();
         MPI_Send(&buff, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
