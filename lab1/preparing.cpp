@@ -23,5 +23,6 @@ int main(int argc, char *argv[]) {
         MPI_Send(&buff, 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
     }
 
+    MPI_Finalize();
     return 0;
 }
