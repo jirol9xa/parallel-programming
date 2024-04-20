@@ -1,4 +1,4 @@
-#include "MPI.h"
+#include "mpi_common.h"
 #include <iomanip>
 #include <unistd.h>
 #include <iostream>
@@ -12,11 +12,11 @@ int main(int argc, char *argv[]) {
     TMPI mpi;
 
     unsigned stepsAmnt = std::atoi(argv[1]);
-    int threadsAmnt = mpi.getThreadsAmnt();
+    int threadsAmnt = mpi.GetThreadsAmnt();
     double step = 1./stepsAmnt;
     long long stepsPerThread = stepsAmnt / threadsAmnt;
 
-    int rank = mpi.getRank();    
+    int rank = mpi.GetRank();    
     
     int leftBorder  = rank * stepsPerThread;
     int rightBorder = (rank + 1) * stepsPerThread;
